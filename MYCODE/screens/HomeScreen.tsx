@@ -15,14 +15,9 @@ const HomeScreen = () => {
     console.log('test');
   };
 
-  const konsola = () => {
-    console.log('Kotek');
-  };
-
   const handleButton = () => {
     wywolajPowiadomienie();
     napiszWKonsoli();
-    konsola();
   };
 
   return (
