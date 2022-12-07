@@ -1,11 +1,30 @@
 import React from 'react';
-import {View, Text, StyleSheet} from 'react-native';
-
-const AccountScreen = () => {
+import {View, Text, StyleSheet, TouchableOpacity} from 'react-native';
+type Props = {
+  onClick: any;
+};
+const AccountScreen = ({onClick}: Props) => {
   return (
-    <View>
-      <Text style={naszeStyle.titleText}> ACCOUNT SCREEN </Text>
-      <Text style={naszeStyle.titleText2}> asdasdasddassad </Text>
+    <View
+      style={{
+        flex: 1,
+        backgroundColor: 'blue',
+        flexDirection: 'column',
+      }}>
+      <View style={naszeStyle.view1}>
+        <TouchableOpacity
+          onPress={onClick}
+          style={{
+            width: 100,
+            height: 100,
+            backgroundColor: 'green',
+            justifyContent: 'center',
+            alignItems: 'center',
+          }}>
+          <Text>KLIK</Text>
+        </TouchableOpacity>
+      </View>
+      <View style={naszeStyle.view2} />
     </View>
   );
 };
@@ -16,8 +35,15 @@ const naszeStyle = StyleSheet.create({
     backgroundColor: 'green',
     fontSize: 50,
   },
-  titleText2: {
-    backgroundColor: 'blue',
+
+  view1: {
+    flex: 0.3,
+    backgroundColor: 'red',
+  },
+
+  view2: {
+    flex: 0.2,
+    backgroundColor: 'green',
   },
 });
 

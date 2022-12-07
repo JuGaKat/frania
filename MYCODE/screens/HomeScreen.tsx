@@ -1,7 +1,10 @@
 import React, {useState} from 'react';
 import {Text, TouchableOpacity, View} from 'react-native';
 
-const HomeScreen = () => {
+type Props = {
+  onClick: any;
+};
+const HomeScreen = ({onClick}: Props) => {
   const [title, setTitle] = useState('Pies');
 
   const handleButton = () => {
@@ -12,8 +15,7 @@ const HomeScreen = () => {
     <View
       style={{
         backgroundColor: 'blue',
-        height: '60%',
-        width: '100%',
+        flex: 1,
         alignItems: 'center',
       }}>
       <Text
@@ -23,7 +25,7 @@ const HomeScreen = () => {
         {title}
       </Text>
       <TouchableOpacity
-        onPress={handleButton}
+        onPress={onClick}
         style={{
           width: 100,
           height: 100,
