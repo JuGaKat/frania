@@ -1,30 +1,18 @@
-import React from 'react';
-import {Alert, Text, TouchableOpacity, View} from 'react-native';
+import React, {useState} from 'react';
+import {Text, TouchableOpacity, View} from 'react-native';
 
 const HomeScreen = () => {
-  const wywolajPowiadomienie = () =>
-    Alert.alert('Alert Title', 'My Alert Msg', [
-      {
-        text: 'Cancel',
-        onPress: () => console.log('Cancel Pressed'),
-        style: 'cancel',
-      },
-    ]);
-
-  const napiszWKonsoli = () => {
-    console.log('test');
-  };
+  const [title, setTitle] = useState('Pies');
 
   const handleButton = () => {
-    wywolajPowiadomienie();
-    napiszWKonsoli();
+    setTitle('2 pieski');
   };
 
   return (
     <View
       style={{
         backgroundColor: 'blue',
-        height: '100%',
+        height: '60%',
         width: '100%',
         alignItems: 'center',
       }}>
@@ -32,7 +20,7 @@ const HomeScreen = () => {
         style={{
           fontSize: 50,
         }}>
-        Piesek
+        {title}
       </Text>
       <TouchableOpacity
         onPress={handleButton}

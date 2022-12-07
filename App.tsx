@@ -1,84 +1,32 @@
-import React, {type PropsWithChildren} from 'react';
-import {
-  SafeAreaView,
-  ScrollView,
-  StatusBar,
-  StyleSheet,
-  Text,
-  useColorScheme,
-  View,
-} from 'react-native';
+import React, {useState} from 'react';
+import {SafeAreaView, Text, TouchableOpacity} from 'react-native';
 
-import {
-  Colors,
-  DebugInstructions,
-  Header,
-  LearnMoreLinks,
-  ReloadInstructions,
-} from 'react-native/Libraries/NewAppScreen';
+import AccountScreen from './MYCODE/screens/AccountScreen';
 import HomeScreen from './MYCODE/screens/HomeScreen';
 
-const Section: React.FC<
-  PropsWithChildren<{
-    title: string;
-  }>
-> = ({children, title}) => {
-  const isDarkMode = useColorScheme() === 'dark';
-  return (
-    <View style={styles.sectionContainer}>
-      <Text
-        style={[
-          styles.sectionTitle,
-          {
-            color: isDarkMode ? Colors.white : Colors.black,
-          },
-        ]}>
-        {title}
-      </Text>
-      <Text
-        style={[
-          styles.sectionDescription,
-          {
-            color: isDarkMode ? Colors.light : Colors.dark,
-          },
-        ]}>
-        {children}
-      </Text>
-    </View>
-  );
-};
-
 const App = () => {
-  const isDarkMode = useColorScheme() === 'dark';
+  const [visibleAccount, setVisibleAccount] = useState<boolean>(false);
 
-  const backgroundStyle = {
-    backgroundColor: isDarkMode ? Colors.darker : Colors.lighter,
+  const handleButton = () => {
+    setVisibleAccount(prevState => !prevState);
   };
 
   return (
-    <SafeAreaView style={backgroundStyle}>
-      <HomeScreen />
+    <SafeAreaView>
+      {visibleAccount ? <AccountScreen /> : <HomeScreen />}
+      <TouchableOpacity
+        onPress={handleButton}
+        style={{
+          width: 100,
+          height: 100,
+          backgroundColor: 'yellow',
+          justifyContent: 'center',
+          alignItems: 'center',
+        }}>
+        <Text>Przycisk do zmiany widoku</Text>
+      </TouchableOpacity>
     </SafeAreaView>
   );
 };
-
-const styles = StyleSheet.create({
-  sectionContainer: {
-    marginTop: 32,
-    paddingHorizontal: 24,
-  },
-  sectionTitle: {
-    fontSize: 24,
-    fontWeight: '600',
-  },
-  sectionDescription: {
-    marginTop: 8,
-    fontSize: 18,
-    fontWeight: '400',
-  },
-  highlight: {
-    fontWeight: '700',
-  },
-});
 
 export default App;
