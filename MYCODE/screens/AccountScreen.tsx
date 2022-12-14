@@ -21,7 +21,7 @@ const AccountScreen = ({onClick}: Props) => {
             justifyContent: 'center',
             alignItems: 'center',
           }}>
-          <Text>KLIK</Text>
+          <Text>KLIK2</Text>
         </TouchableOpacity>
       </View>
       <View style={naszeStyle.view2} />
