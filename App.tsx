@@ -14,7 +14,7 @@ const App = () => {
   return (
     <SafeAreaView style={{flex: 1}}>
       {visibleAccount ? (
-        <AccountScreen onClick={handleButton} />
+        <AccountScreen zmianaWidoku={handleButton} />
       ) : (
         <HomeScreen onClick={handleButton} />
       )}
