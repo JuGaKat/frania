@@ -1,7 +1,63 @@
 import React, {useState} from 'react';
-import {View, Text, StyleSheet, TouchableOpacity} from 'react-native';
+import {
+  View,
+  Text,
+  StyleSheet,
+  TouchableOpacity,
+  FlatList,
+  Image,
+} from 'react-native';
+
 type Props = {
   zmianaWidoku: any;
+};
+type PrzepisType = {
+  id: number;
+  tytul: string;
+  cena: number;
+};
+const tablicaPrzepisow: Array<PrzepisType> = [
+  {
+    id: 0,
+    tytul: 'Nalesniki',
+    cena: 10.5,
+  },
+  {
+    id: 1,
+    tytul: 'Jajecznica',
+    cena: 20,
+  },
+  {
+    id: 2,
+    tytul: 'Kanapki',
+    cena: 5,
+  },
+  {
+    id: 3,
+    tytul: 'Nalesniki',
+    cena: 10.5,
+  },
+  {
+    id: 4,
+    tytul: 'Jajecznica',
+    cena: 20,
+  },
+  {
+    id: 5,
+    tytul: 'Kanapki',
+    cena: 5,
+  },
+];
+
+const renderujPrzepis = ({item}: {item: PrzepisType}) => {
+  return (
+    <TouchableOpacity>
+      <Text style={naszeStyle.itemText}>
+        {item.tytul}
+        {item.cena}PLN
+      </Text>
+    </TouchableOpacity>
+  );
 };
 const AccountScreen = ({zmianaWidoku}: Props) => {
   const [zmienna, setZmienna] = useState<number>(0);
@@ -45,7 +101,21 @@ const AccountScreen = ({zmianaWidoku}: Props) => {
           <Text>{`KLIK ${zmienna}`}</Text>
         </TouchableOpacity>
       </View>
-      <View style={naszeStyle.view2} />
+      <View style={naszeStyle.view2}>
+        <FlatList
+          showsVerticalScrollIndicator={false}
+          data={tablicaPrzepisow}
+          renderItem={renderujPrzepis}
+          keyExtractor={(item, index) => index.toString()}
+        />
+      </View>
+      <Image
+        style={naszeStyle.obrazek}
+        resizeMode={'contain'}
+        source={{
+          uri: 'https://upload.wikimedia.org/wikipedia/commons/thumb/1/11/Zielony_listek.svg/1920px-Zielony_listek.svg.png',
+        }}
+      />
     </View>
   );
 };
@@ -63,8 +133,19 @@ const naszeStyle = StyleSheet.create({
   },
 
   view2: {
-    flex: 0.2,
+    flex: 0.3,
     backgroundColor: 'green',
+  },
+  itemText: {
+    backgroundColor: 'grey',
+    borderRadius: 2,
+    borderWidth: 1,
+    padding: 5,
+    margin: 6,
+  },
+  obrazek: {
+    width: 300,
+    height: 300,
   },
 });
 
