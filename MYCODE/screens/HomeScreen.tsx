@@ -7,10 +7,13 @@ type Props = {
 const HomeScreen = ({onClick}: Props) => {
   const [title, setTitle] = useState('Pies');
 
-  const handleButton = () => {
-    setTitle('2 pieski');
+  const costam = () => {
+    if (title === 'Pies') {
+      setTitle('2 pieski');
+    } else {
+      setTitle('Pies');
+    }
   };
-
   return (
     <View
       style={{
@@ -20,7 +23,7 @@ const HomeScreen = ({onClick}: Props) => {
       }}>
       <Text
         style={{
-          fontSize: 50,
+          fontSize: 80,
         }}>
         {title}
       </Text>
