@@ -7,6 +7,7 @@ import {
   FlatList,
   Image,
 } from 'react-native';
+import {MenuImage} from '../assets/images';
 
 type Props = {
   zmianaWidoku: any;
@@ -15,6 +16,7 @@ type PrzepisType = {
   id: number;
   tytul: string;
   cena: number;
+  lp?: number;
 };
 type PrzepisDrugiType = {
   id: number;
@@ -89,6 +91,19 @@ const renderujPrzepis = ({item}: {item: PrzepisType}) => {
 const AccountScreen = ({zmianaWidoku}: Props) => {
   const [zmienna, setZmienna] = useState<number>(0);
 
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  const ulepszonaTablicaPrzepisow = tablicaPrzepisow.map((element, index) => {
+    return {...element, lp: index + 1};
+  });
+
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  const ulepszonaTablicaPrzepisow2 = tablicaPrzepisow.map((element, index) => {
+    let nowyElement = element;
+    nowyElement.lp = index;
+    return nowyElement;
+  });
+
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const onClick1 = () => {
     if (zmienna === 0) {
       setZmienna(100);
@@ -141,9 +156,7 @@ const AccountScreen = ({zmianaWidoku}: Props) => {
         <Image
           style={naszeStyle.obrazek}
           resizeMode={'contain'}
-          source={{
-            uri: 'https://media.istockphoto.com/id/1309816331/pl/wektor/ilustracja-%C5%9Bwie%C5%BCych-przystawek-obiadowych-r%C4%99cznie-rysowanych-element%C3%B3w-wektorowych.jpg?s=612x612&w=0&k=20&c=q2VTO-NDKxSfhzYOi3YWiwUiIatol-ERNqD9Wg47ol4=',
-          }}
+          source={MenuImage}
         />
       </View>
       <View style={{flex: 0.33, backgroundColor: 'blue'}}>
