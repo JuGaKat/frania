@@ -3,23 +3,30 @@ import {SafeAreaView} from 'react-native';
 
 import AccountScreen from './MYCODE/screens/AccountScreen';
 import HomeScreen from './MYCODE/screens/HomeScreen';
+import NewScreen from './MYCODE/screens/NewScreen';
 
 const App = () => {
-  const [visibleAccount, setVisibleAccount] = useState<boolean>(false);
+  const [screenNumber, setScreenNumber] = useState<number>(1);
 
-  const handleButton = () => {
-    setVisibleAccount(prevState => !prevState);
+  const handleButton = (numerWidoku: number) => {
+    setScreenNumber(numerWidoku);
   };
 
-  return (
-    <SafeAreaView style={{flex: 1}}>
-      {visibleAccount ? (
-        <AccountScreen zmianaWidoku={handleButton} />
-      ) : (
-        <HomeScreen onClick={handleButton} />
-      )}
-    </SafeAreaView>
-  );
+  const podmianaWidokow = () => {
+    switch (screenNumber) {
+      case 1:
+        return <HomeScreen onClick={handleButton} />;
+      case 2:
+        return <AccountScreen zmianaWidoku={handleButton} />;
+      case 3:
+        return <NewScreen onClick={handleButton} />;
+
+      default:
+        return <HomeScreen onClick={handleButton} />;
+    }
+  };
+
+  return <SafeAreaView style={{flex: 1}}>{podmianaWidokow()}</SafeAreaView>;
 };
 
 export default App;

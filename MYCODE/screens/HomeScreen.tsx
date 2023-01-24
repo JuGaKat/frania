@@ -57,7 +57,7 @@ const HomeScreen = ({onClick}: Props) => {
       </View>
       <View style={{flexDirection: 'row'}}>
         <TouchableOpacity
-          onPress={onClick}
+          onPress={() => onClick(2)}
           style={{
             width: 100,
             height: 100,
@@ -65,7 +65,7 @@ const HomeScreen = ({onClick}: Props) => {
             justifyContent: 'center',
             alignItems: 'center',
           }}>
-          <Text>ZMIANA WIDOKU</Text>
+          <Text>ZMIANA WIDOKU na ACCOUNT</Text>
         </TouchableOpacity>
         <TouchableOpacity
           onPress={startAnimation}
