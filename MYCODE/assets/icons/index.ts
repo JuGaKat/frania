@@ -1,5 +1,6 @@
 // @ts-nocheck
 import DogIcon from '../icons/dog.svg';
 import FishIcon from '../icons/fish.svg';
-
-export {DogIcon, FishIcon};
+import RabbitIcon from '../icons/rabbit.svg';
+import CatIcon from '../icons/cat.svg';
+export {DogIcon, FishIcon, RabbitIcon, CatIcon};

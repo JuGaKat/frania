@@ -1,7 +1,7 @@
 import React, {useEffect, useRef, useState} from 'react';
 import {Text, TouchableOpacity, View} from 'react-native';
 import Lottie from 'lottie-react-native';
-import {DogIcon, FishIcon} from '../assets/icons';
+import {DogIcon, FishIcon, RabbitIcon, CatIcon} from '../assets/icons';
 
 type Props = {
   onClick: any;
@@ -17,6 +17,13 @@ const HomeScreen = ({onClick}: Props) => {
 
   const stopAnimation = () => {
     animationRef.current?.pause();
+  };
+  const handleButton = () => {
+    if (title === 'Pies') {
+      setTitle('2 pieski');
+    } else {
+      setTitle('Pies');
+    }
   };
 
   const costam = () => {
@@ -47,8 +54,10 @@ const HomeScreen = ({onClick}: Props) => {
         {title}
       </Text>
       <View style={{flex: 1, flexDirection: 'row'}}>
-        <DogIcon height={'100%'} width={'50%'} />
-        <FishIcon height={'100%'} width={'50%'} />
+        <DogIcon height={'5%'} width={'5%'} />
+        <CatIcon height={'5%'} width={'5%'} />
+        <FishIcon height={'5%'} width={'5%'} />
+        <RabbitIcon height={'5%'} width={'5%'} />
       </View>
       <View style={{height: '40%', width: '50%'}}>
         <Lottie

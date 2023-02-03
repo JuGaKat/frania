@@ -16,7 +16,7 @@ type PrzepisType = {
   id: number;
   tytul: string;
   cena: number;
-  lp?: number;
+  lp: number;
 };
 type PrzepisDrugiType = {
   id: number;
@@ -28,31 +28,37 @@ const tablicaPrzepisow: Array<PrzepisType> = [
     id: 0,
     tytul: 'Nalesniki ',
     cena: 10.5,
+    lp: 1,
   },
   {
     id: 1,
     tytul: 'Jajecznica ',
     cena: 20,
+    lp: 2,
   },
   {
     id: 2,
     tytul: 'Kanapki ',
     cena: 5,
+    lp: 3,
   },
   {
     id: 3,
     tytul: 'Nalesniki ',
     cena: 10.5,
+    lp: 4,
   },
   {
     id: 4,
     tytul: 'Jajecznica',
     cena: 20,
+    lp: 5,
   },
   {
     id: 5,
     tytul: 'Kanapki',
     cena: 5,
+    lp: 6,
   },
 ];
 const drugaTablicaPrzepisow: Array<PrzepisDrugiType> = [
@@ -133,7 +139,7 @@ const AccountScreen = ({zmianaWidoku}: Props) => {
           <Text>Zmiana widoku</Text>
         </TouchableOpacity>
         <TouchableOpacity
-          onPress={zmianaWidoku}
+          onPress={onClick1}
           style={{
             width: 100,
             height: 100,
