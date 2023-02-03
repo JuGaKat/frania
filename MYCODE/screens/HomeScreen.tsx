@@ -4,7 +4,7 @@ import Lottie from 'lottie-react-native';
 import {DogIcon, FishIcon, RabbitIcon, CatIcon} from '../assets/icons';
 
 type Props = {
-  onClick: any;
+  onClick: (numerWidoku: number) => void;
 };
 const HomeScreen = ({onClick}: Props) => {
   const [title, setTitle] = useState('Pies');

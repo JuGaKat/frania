@@ -2,9 +2,9 @@ import {View, Text, TouchableOpacity, StyleSheet} from 'react-native';
 import {useState} from 'react';
 
 type Props = {
-  onClick: any;
+  onClick: (numerWidoku: number) => void;
 };
-const NewScreen = (onClick: Props) => {
+const NewScreen = ({onClick}: Props) => {
   const [zmienna, setZmienna] = useState('Przycisk on');
 
   const handleButton = () => {

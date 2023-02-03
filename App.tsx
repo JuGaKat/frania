@@ -17,7 +17,7 @@ const App = () => {
       case 1:
         return <HomeScreen onClick={handleButton} />;
       case 2:
-        return <AccountScreen zmianaWidoku={handleButton} />;
+        return <AccountScreen onClick={handleButton} />;
       case 3:
         return <NewScreen onClick={handleButton} />;
 
