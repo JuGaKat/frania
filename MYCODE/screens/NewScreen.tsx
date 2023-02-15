@@ -8,6 +8,7 @@ import {
   Image,
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   SafeAreaView,
+  ImageBackground,
 } from 'react-native';
 import React, {useState} from 'react';
 import {MenuImage} from '../assets/images';
@@ -19,14 +20,10 @@ type Props = {
   onClick: (numerWidoku: number) => void;
 };
 const NewScreen = ({onClick}: Props) => {
-  const [zmienna, setZmienna] = useState('Przycisk on');
+  const [zmienna, setZmienna] = useState<boolean>(true);
 
   const handleButton = () => {
-    if (zmienna === 'Przycisk on') {
-      setZmienna('Przycisk off');
-    } else {
-      setZmienna('Przycisk on');
-    }
+    setZmienna(prevState => !prevState);
   };
   const [enteredGoalText, setEnteredGoalText] = useState('');
   const [courseGoals, setCourseGoals] = useState([]);
@@ -34,7 +31,9 @@ const NewScreen = ({onClick}: Props) => {
   const goalInputHandler = (enteredText: any) => {
     console.log(enteredText);
   };
+
   const addGoalHandler = () => {
+    // @ts-ignore
     setCourseGoals(currentCourseGoals => [
       ...currentCourseGoals,
       enteredGoalText,
@@ -45,60 +44,119 @@ const NewScreen = ({onClick}: Props) => {
     <View
       style={{
         flex: 1,
-        backgroundColor: zmienna === 'Przycisk on' ? 'pink' : 'blue',
+        backgroundColor: zmienna ? 'pink' : 'blue',
       }}>
-      <View
-        style={{
-          flexDirection: 'row',
-          justifyContent: 'space-between',
-          margin: 10,
-        }}>
-        <TouchableOpacity
-          onPress={() => onClick(4)}
-          style={mojStyl.touchablePrzycisk}>
-          <Text>ZMIANA WIDOKU na HOME</Text>
-        </TouchableOpacity>
-        <TouchableOpacity
-          onPress={handleButton}
-          style={mojStyl.touchablePrzycisk}>
-          <Text>{zmienna}</Text>
-        </TouchableOpacity>
-        <TouchableOpacity
-          onPress={handleButton}
-          style={mojStyl.touchablePrzycisk}>
-          <Text>{zmienna}</Text>
-        </TouchableOpacity>
-      </View>
-      <View
-        style={{
-          width: '100%',
-          height: '10%',
-          flexDirection: 'row',
-          alignItems: 'center',
-          justifyContent: 'space-between',
-          backgroundColor: 'grey',
-        }}>
-        <DogIcon height={'25%'} width={'25%'} />
-        <CatIcon height={'25%'} width={'25%'} />
-        <FishIcon height={'25%'} width={'25%'} />
-        <RabbitIcon height={'25%'} width={'25%'} />
-      </View>
-      <Text>Jakis tam</Text>
-      <View style={{flexDirection: 'row'}}>
-        <TextInput
-          style={mojStyl.inputStyle}
-          onChangeText={goalInputHandler}
-          placeholder="Wpisuje text"
-        />
-        <Button title="Button" onPress={addGoalHandler} />
-      </View>
-      <View style={{alignItems: 'center'}}>
-        <Image
-          style={mojStyl.obrazek}
-          resizeMode={'contain'}
-          source={MenuImage}
-        />
-      </View>
+      {zmienna ? (
+        <ImageBackground resizeMode={'cover'} source={MenuImage}>
+          <View
+            style={{
+              flexDirection: 'row',
+              justifyContent: 'space-between',
+              margin: 10,
+            }}>
+            <TouchableOpacity
+              onPress={() => onClick(4)}
+              style={mojStyl.touchablePrzycisk}>
+              <Text>ZMIANA WIDOKU na HOME</Text>
+            </TouchableOpacity>
+            <TouchableOpacity
+              onPress={handleButton}
+              style={mojStyl.touchablePrzycisk}>
+              <Text>Przycisk ON</Text>
+            </TouchableOpacity>
+            <TouchableOpacity
+              onPress={handleButton}
+              style={mojStyl.touchablePrzycisk}>
+              <Text>Przycisk OFF</Text>
+            </TouchableOpacity>
+          </View>
+          <View
+            style={{
+              width: '100%',
+              height: '10%',
+              flexDirection: 'row',
+              alignItems: 'center',
+              justifyContent: 'space-between',
+              backgroundColor: 'grey',
+            }}>
+            <DogIcon height={'25%'} width={'25%'} />
+            <CatIcon height={'25%'} width={'25%'} />
+            <FishIcon height={'25%'} width={'25%'} />
+            <RabbitIcon height={'25%'} width={'25%'} />
+          </View>
+          <Text>Jakis tam</Text>
+          <View style={{flexDirection: 'row'}}>
+            <TextInput
+              style={mojStyl.inputStyle}
+              onChangeText={goalInputHandler}
+              placeholder="Wpisuje text"
+            />
+            <Button title="Button" onPress={addGoalHandler} />
+          </View>
+          <View style={{alignItems: 'center'}}>
+            <Image
+              style={mojStyl.obrazek}
+              resizeMode={'contain'}
+              source={MenuImage}
+            />
+          </View>
+        </ImageBackground>
+      ) : (
+        <View>
+          <View
+            style={{
+              flexDirection: 'row',
+              justifyContent: 'space-between',
+              margin: 10,
+            }}>
+            <TouchableOpacity
+              onPress={() => onClick(4)}
+              style={mojStyl.touchablePrzycisk}>
+              <Text>ZMIANA WIDOKU na HOME</Text>
+            </TouchableOpacity>
+            <TouchableOpacity
+              onPress={handleButton}
+              style={mojStyl.touchablePrzycisk}>
+              <Text>Przycisk ON</Text>
+            </TouchableOpacity>
+            <TouchableOpacity
+              onPress={handleButton}
+              style={mojStyl.touchablePrzycisk}>
+              <Text>Przycisk OFF</Text>
+            </TouchableOpacity>
+          </View>
+          <View
+            style={{
+              width: '100%',
+              height: '10%',
+              flexDirection: 'row',
+              alignItems: 'center',
+              justifyContent: 'space-between',
+              backgroundColor: 'grey',
+            }}>
+            <DogIcon height={'25%'} width={'25%'} />
+            <CatIcon height={'25%'} width={'25%'} />
+            <FishIcon height={'25%'} width={'25%'} />
+            <RabbitIcon height={'25%'} width={'25%'} />
+          </View>
+          <Text>Jakis tam</Text>
+          <View style={{flexDirection: 'row'}}>
+            <TextInput
+              style={mojStyl.inputStyle}
+              onChangeText={goalInputHandler}
+              placeholder="Wpisuje text"
+            />
+            <Button title="Button" onPress={addGoalHandler} />
+          </View>
+          <View style={{alignItems: 'center'}}>
+            <Image
+              style={mojStyl.obrazek}
+              resizeMode={'contain'}
+              source={MenuImage}
+            />
+          </View>
+        </View>
+      )}
     </View>
   );
 };

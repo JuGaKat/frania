@@ -16,7 +16,7 @@ type PrzepisType = {
   id: number;
   tytul: string;
   cena: number;
-  lp: number;
+  lp?: number;
 };
 type PrzepisDrugiType = {
   id: number;
@@ -28,13 +28,11 @@ const tablicaPrzepisow: Array<PrzepisType> = [
     id: 0,
     tytul: 'Nalesniki ',
     cena: 10.5,
-    lp: 1,
   },
   {
     id: 1,
     tytul: 'Jajecznica ',
     cena: 20,
-    lp: 2,
   },
   {
     id: 2,
@@ -88,7 +86,7 @@ const renderujPrzepis = ({item}: {item: PrzepisType}) => {
   return (
     <TouchableOpacity>
       <Text style={naszeStyle.itemText}>
-        {item.tytul}
+        {item.lp}.{item.tytul}
         {item.cena} PLN
       </Text>
     </TouchableOpacity>
@@ -100,13 +98,6 @@ const AccountScreen = ({onClick}: Props) => {
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const ulepszonaTablicaPrzepisow = tablicaPrzepisow.map((element, index) => {
     return {...element, lp: index + 1};
-  });
-
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  const ulepszonaTablicaPrzepisow2 = tablicaPrzepisow.map((element, index) => {
-    let nowyElement = element;
-    nowyElement.lp = index;
-    return nowyElement;
   });
 
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
@@ -152,7 +143,7 @@ const AccountScreen = ({onClick}: Props) => {
       <View style={naszeStyle.view2}>
         <FlatList
           showsVerticalScrollIndicator={false}
-          data={tablicaPrzepisow}
+          data={ulepszonaTablicaPrzepisow}
           renderItem={renderujPrzepis}
           keyExtractor={(item, index) => index.toString()}
         />

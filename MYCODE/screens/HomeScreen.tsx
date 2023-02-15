@@ -2,6 +2,7 @@ import React, {useEffect, useRef, useState} from 'react';
 import {Text, TouchableOpacity, View} from 'react-native';
 import {DogIcon, FishIcon, RabbitIcon, CatIcon} from '../assets/icons';
 import Lottie from 'lottie-react-native';
+import {SwimmingLottie} from '../assets/lottie';
 
 type Props = {
   onClick: (numerWidoku: number) => void;
@@ -60,18 +61,15 @@ const HomeScreen = ({onClick}: Props) => {
           flexDirection: 'column',
           alignItems: 'center',
         }}>
-        <DogIcon height={'25%'} width={'25%'} />
+        <TouchableOpacity style={{width: '25%', height: '25%'}}>
+          <DogIcon height={'100%'} width={'100%'} />
+        </TouchableOpacity>
         <CatIcon height={'25%'} width={'25%'} />
         <FishIcon height={'25%'} width={'25%'} />
         <RabbitIcon height={'25%'} width={'25%'} />
       </View>
       <View style={{height: '40%', width: '50%'}}>
-        <Lottie
-          ref={animationRef}
-          source={require('../assets/lottie/dog_animation.json')}
-          loop
-          autoPlay
-        />
+        <Lottie ref={animationRef} source={SwimmingLottie} loop autoPlay />
       </View>
       <View style={{flexDirection: 'row'}}>
         <TouchableOpacity

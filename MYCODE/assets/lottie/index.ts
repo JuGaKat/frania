@@ -1,3 +1,4 @@
 //@ts-nocheck
 import SwimmingLottie from '../lottie/swimming.json';
-export {SwimmingLottie};
+import DogLottie from '../lottie/dog_animation.json';
+export {SwimmingLottie, DogLottie};
