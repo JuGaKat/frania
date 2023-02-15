@@ -10,7 +10,7 @@ import {
 import {MenuImage} from '../assets/images';
 
 type Props = {
-  onClick: any;
+  onClick: (numerWidoku: number) => void;
 };
 type PrzepisType = {
   id: number;
@@ -97,6 +97,7 @@ const renderujPrzepis = ({item}: {item: PrzepisType}) => {
 const AccountScreen = ({onClick}: Props) => {
   const [zmienna, setZmienna] = useState<number>(0);
 
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const ulepszonaTablicaPrzepisow = tablicaPrzepisow.map((element, index) => {
     return {...element, lp: index + 1};
   });

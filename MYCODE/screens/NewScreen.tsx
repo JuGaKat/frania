@@ -16,7 +16,7 @@ import Lottie from 'lottie-react-native';
 import {CatIcon, DogIcon, FishIcon, RabbitIcon} from '../assets/icons';
 
 type Props = {
-  onClick: any;
+  onClick: (numerWidoku: number) => void;
 };
 const NewScreen = ({onClick}: Props) => {
   const [zmienna, setZmienna] = useState('Przycisk on');
