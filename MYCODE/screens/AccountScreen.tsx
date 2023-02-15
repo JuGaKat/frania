@@ -10,7 +10,7 @@ import {
 import {MenuImage} from '../assets/images';
 
 type Props = {
-  zmianaWidoku: any;
+  onClick: any;
 };
 type PrzepisType = {
   id: number;
@@ -94,10 +94,9 @@ const renderujPrzepis = ({item}: {item: PrzepisType}) => {
     </TouchableOpacity>
   );
 };
-const AccountScreen = ({zmianaWidoku}: Props) => {
+const AccountScreen = ({onClick}: Props) => {
   const [zmienna, setZmienna] = useState<number>(0);
 
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const ulepszonaTablicaPrzepisow = tablicaPrzepisow.map((element, index) => {
     return {...element, lp: index + 1};
   });
@@ -127,7 +126,7 @@ const AccountScreen = ({zmianaWidoku}: Props) => {
       }}>
       <View style={naszeStyle.view1}>
         <TouchableOpacity
-          onPress={() => zmianaWidoku(3)}
+          onPress={() => onClick(3)}
           style={{
             width: 100,
             height: 100,

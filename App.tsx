@@ -4,6 +4,7 @@ import {SafeAreaView} from 'react-native';
 import AccountScreen from './MYCODE/screens/AccountScreen';
 import HomeScreen from './MYCODE/screens/HomeScreen';
 import NewScreen from './MYCODE/screens/NewScreen';
+import MojScreen from './MYCODE/screens/MojScreen';
 
 const App = () => {
   const [screenNumber, setScreenNumber] = useState<number>(1);
@@ -17,10 +18,11 @@ const App = () => {
       case 1:
         return <HomeScreen onClick={handleButton} />;
       case 2:
-        return <AccountScreen zmianaWidoku={handleButton} />;
+        return <AccountScreen onClick={handleButton} />;
       case 3:
         return <NewScreen onClick={handleButton} />;
-
+      case 4:
+        return <MojScreen onClick={handleButton} />;
       default:
         return <HomeScreen onClick={handleButton} />;
     }

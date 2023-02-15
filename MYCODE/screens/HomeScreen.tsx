@@ -1,7 +1,7 @@
 import React, {useEffect, useRef, useState} from 'react';
 import {Text, TouchableOpacity, View} from 'react-native';
-import Lottie from 'lottie-react-native';
 import {DogIcon, FishIcon, RabbitIcon, CatIcon} from '../assets/icons';
+import Lottie from 'lottie-react-native';
 
 type Props = {
   onClick: any;
@@ -53,11 +53,17 @@ const HomeScreen = ({onClick}: Props) => {
         }}>
         {title}
       </Text>
-      <View style={{flex: 1, flexDirection: 'row'}}>
-        <DogIcon height={'5%'} width={'5%'} />
-        <CatIcon height={'5%'} width={'5%'} />
-        <FishIcon height={'5%'} width={'5%'} />
-        <RabbitIcon height={'5%'} width={'5%'} />
+      <View
+        style={{
+          width: 200,
+          height: 200,
+          flexDirection: 'column',
+          alignItems: 'center',
+        }}>
+        <DogIcon height={'25%'} width={'25%'} />
+        <CatIcon height={'25%'} width={'25%'} />
+        <FishIcon height={'25%'} width={'25%'} />
+        <RabbitIcon height={'25%'} width={'25%'} />
       </View>
       <View style={{height: '40%', width: '50%'}}>
         <Lottie
