@@ -27,7 +27,10 @@ const BackgroundImageChanger = ({
   }
 
   return (
-    <ImageBackground resizeMode={resizeMode} source={source}>
+    <ImageBackground
+      style={{height: '100%'}}
+      resizeMode={resizeMode}
+      source={source}>
       {children}
     </ImageBackground>
   );
