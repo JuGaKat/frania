@@ -15,6 +15,7 @@ import {MenuImage} from '../assets/images';
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 import Lottie from 'lottie-react-native';
 import {CatIcon, DogIcon, FishIcon, RabbitIcon} from '../assets/icons';
+import BackgroundImageChanger from '../components/BackgroundImageChanger';
 
 type Props = {
   onClick: (numerWidoku: number) => void;
@@ -46,117 +47,64 @@ const NewScreen = ({onClick}: Props) => {
         flex: 1,
         backgroundColor: zmienna ? 'pink' : 'blue',
       }}>
-      {zmienna ? (
-        <ImageBackground resizeMode={'cover'} source={MenuImage}>
-          <View
-            style={{
-              flexDirection: 'row',
-              justifyContent: 'space-between',
-              margin: 10,
-            }}>
-            <TouchableOpacity
-              onPress={() => onClick(4)}
-              style={mojStyl.touchablePrzycisk}>
-              <Text>ZMIANA WIDOKU na HOME</Text>
-            </TouchableOpacity>
-            <TouchableOpacity
-              onPress={handleButton}
-              style={mojStyl.touchablePrzycisk}>
-              <Text>Przycisk ON</Text>
-            </TouchableOpacity>
-            <TouchableOpacity
-              onPress={handleButton}
-              style={mojStyl.touchablePrzycisk}>
-              <Text>Przycisk OFF</Text>
-            </TouchableOpacity>
-          </View>
-          <View
-            style={{
-              width: '100%',
-              height: '10%',
-              flexDirection: 'row',
-              alignItems: 'center',
-              justifyContent: 'space-between',
-              backgroundColor: 'grey',
-            }}>
-            <DogIcon height={'25%'} width={'25%'} />
-            <CatIcon height={'25%'} width={'25%'} />
-            <FishIcon height={'25%'} width={'25%'} />
-            <RabbitIcon height={'25%'} width={'25%'} />
-          </View>
-          <Text>Jakis tam</Text>
-          <View style={{flexDirection: 'row'}}>
-            <TextInput
-              style={mojStyl.inputStyle}
-              onChangeText={goalInputHandler}
-              placeholder="Wpisuje text"
-            />
-            <Button title="Button" onPress={addGoalHandler} />
-          </View>
-          <View style={{alignItems: 'center'}}>
-            <Image
-              style={mojStyl.obrazek}
-              resizeMode={'contain'}
-              source={MenuImage}
-            />
-          </View>
-        </ImageBackground>
-      ) : (
-        <View>
-          <View
-            style={{
-              flexDirection: 'row',
-              justifyContent: 'space-between',
-              margin: 10,
-            }}>
-            <TouchableOpacity
-              onPress={() => onClick(4)}
-              style={mojStyl.touchablePrzycisk}>
-              <Text>ZMIANA WIDOKU na HOME</Text>
-            </TouchableOpacity>
-            <TouchableOpacity
-              onPress={handleButton}
-              style={mojStyl.touchablePrzycisk}>
-              <Text>Przycisk ON</Text>
-            </TouchableOpacity>
-            <TouchableOpacity
-              onPress={handleButton}
-              style={mojStyl.touchablePrzycisk}>
-              <Text>Przycisk OFF</Text>
-            </TouchableOpacity>
-          </View>
-          <View
-            style={{
-              width: '100%',
-              height: '10%',
-              flexDirection: 'row',
-              alignItems: 'center',
-              justifyContent: 'space-between',
-              backgroundColor: 'grey',
-            }}>
-            <DogIcon height={'25%'} width={'25%'} />
-            <CatIcon height={'25%'} width={'25%'} />
-            <FishIcon height={'25%'} width={'25%'} />
-            <RabbitIcon height={'25%'} width={'25%'} />
-          </View>
-          <Text>Jakis tam</Text>
-          <View style={{flexDirection: 'row'}}>
-            <TextInput
-              style={mojStyl.inputStyle}
-              onChangeText={goalInputHandler}
-              placeholder="Wpisuje text"
-            />
-            <Button title="Button" onPress={addGoalHandler} />
-          </View>
-          <View style={{alignItems: 'center'}}>
-            <Image
-              style={mojStyl.obrazek}
-              resizeMode={'contain'}
-              source={MenuImage}
-            />
-          </View>
+      {/*@ts-ignore*/}
+      <BackgroundImageChanger
+        isActive={zmienna}
+        source={MenuImage}
+        resizeMode={'cover'}>
+        <View
+          style={{
+            flexDirection: 'row',
+            justifyContent: 'space-between',
+            margin: 10,
+          }}>
+          <TouchableOpacity
+            onPress={() => onClick(4)}
+            style={mojStyl.touchablePrzycisk}>
+            <Text>ZMIANA WIDOKU na HOME</Text>
+          </TouchableOpacity>
+          <TouchableOpacity
+            onPress={handleButton}
+            style={mojStyl.touchablePrzycisk}>
+            <Text>Przycisk ON</Text>
+          </TouchableOpacity>
+          <TouchableOpacity
+            onPress={handleButton}
+            style={mojStyl.touchablePrzycisk}>
+            <Text>Przycisk OFF</Text>
+          </TouchableOpacity>
         </View>
-      )}
+        <View
+          style={{
+            width: '100%',
+            height: '10%',
+            flexDirection: 'row',
+            alignItems: 'center',
+            justifyContent: 'space-between',
+            backgroundColor: 'grey',
+          }}>
+          <DogIcon height={'25%'} width={'25%'} />
+          <CatIcon height={'25%'} width={'25%'} />
+          <FishIcon height={'25%'} width={'25%'} />
+          <RabbitIcon height={'25%'} width={'25%'} />
+        </View>
+        <Text>Jakis tam</Text>
+        <View style={{flexDirection: 'row'}}>
+          <TextInput
+            style={mojStyl.inputStyle}
+            onChangeText={goalInputHandler}
+            placeholder="Wpisuje text"
+          />
+          <Button title="Button" onPress={addGoalHandler} />
+        </View>
+        <View style={{alignItems: 'center'}}>
+          <Image
+            style={mojStyl.obrazek}
+            resizeMode={'contain'}
+            source={MenuImage}
+          />
+        </View>
+      </BackgroundImageChanger>
     </View>
   );
 };
