@@ -71,7 +71,12 @@ const NewScreenContent = ({onClick, setZmienna, zmienna}: Props) => {
       <Text>Jakis tam</Text>
       <View style={{flexDirection: 'row'}}>
         <TextInput
-          style={mojStyl.inputStyle}
+          // TABLICA STYLI
+          style={[
+            mojStyl.inputStyle,
+            mojStyl.inputStyleBackground,
+            {fontSize: 25},
+          ]}
           onChangeText={goalInputHandler}
           placeholder="Wpisuje text"
         />
@@ -104,6 +109,9 @@ const mojStyl = StyleSheet.create({
     width: '70%',
     marginRight: 10,
     padding: 8,
+  },
+  inputStyleBackground: {
+    backgroundColor: 'green',
   },
   obrazek: {
     width: 200,
