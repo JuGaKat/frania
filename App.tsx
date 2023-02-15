@@ -5,9 +5,10 @@ import AccountScreen from './MYCODE/screens/AccountScreen';
 import HomeScreen from './MYCODE/screens/HomeScreen';
 import NewScreen from './MYCODE/screens/newScreen/NewScreen';
 import MojScreen from './MYCODE/screens/MojScreen';
+import APIScreen from './MYCODE/screens/APIScreen';
 
 const App = () => {
-  const [screenNumber, setScreenNumber] = useState<number>(1);
+  const [screenNumber, setScreenNumber] = useState<number>(5);
 
   const handleButton = (numerWidoku: number) => {
     setScreenNumber(numerWidoku);
@@ -23,6 +24,8 @@ const App = () => {
         return <NewScreen onClick={handleButton} />;
       case 4:
         return <MojScreen onClick={handleButton} />;
+      case 5:
+        return <APIScreen onClick={handleButton} />;
       default:
         return <HomeScreen onClick={handleButton} />;
     }

@@ -48,13 +48,13 @@ const MojScreen = ({onClick}: Props) => {
       <Text style={{fontSize: 26, fontWeight: 'bold'}}>MOJ SCREEN</Text>
       <View style={{flexDirection: 'row'}}>
         <TouchableOpacity
-          onPress={() => onClick(1)}
+          onPress={() => onClick(5)}
           style={{
             width: 100,
             height: 100,
             backgroundColor: 'black',
           }}>
-          <Text style={{color: 'white'}}>ZMIANA WIDOKU na HOME</Text>
+          <Text style={{color: 'white'}}>ZMIANA WIDOKU na API</Text>
         </TouchableOpacity>
       </View>
 
