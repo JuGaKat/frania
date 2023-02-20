@@ -8,8 +8,16 @@ type Props = {
   onClick: (numerWidoku: number) => void;
 };
 const HomeScreen = ({onClick}: Props) => {
-  const [title, setTitle] = useState('Pies');
+  const [title, setTitle] = useState('');
 
+  const [przycisk, setPrzycisk] = useState('START');
+  const zmianaPrzycisku = () => {
+    if (przycisk === 'START') {
+      setPrzycisk('STOP');
+    } else {
+      setPrzycisk('START');
+    }
+  };
   const animationRef = useRef<Lottie>(null);
 
   const startAnimation = () => {
@@ -20,7 +28,7 @@ const HomeScreen = ({onClick}: Props) => {
     animationRef.current?.pause();
   };
   const handleButton = () => {
-    if (title === 'Pies') {
+    if (title === '') {
       setTitle('2 pieski');
     } else {
       setTitle('Pies');
@@ -28,10 +36,10 @@ const HomeScreen = ({onClick}: Props) => {
   };
 
   const costam = () => {
-    if (title === 'Pies') {
-      setTitle('2 pieski');
+    if (title === '') {
+      setTitle('Homescreen');
     } else {
-      setTitle('Pies');
+      setTitle('');
     }
   };
 
@@ -50,7 +58,7 @@ const HomeScreen = ({onClick}: Props) => {
       }}>
       <Text
         style={{
-          fontSize: 80,
+          fontSize: 50,
         }}>
         {title}
       </Text>
@@ -61,7 +69,9 @@ const HomeScreen = ({onClick}: Props) => {
           flexDirection: 'column',
           alignItems: 'center',
         }}>
-        <TouchableOpacity style={{width: '25%', height: '25%'}}>
+        <TouchableOpacity
+          style={{width: '25%', height: '25%'}}
+          onPress={costam}>
           <DogIcon height={'100%'} width={'100%'} />
         </TouchableOpacity>
         <CatIcon height={'25%'} width={'25%'} />
@@ -84,7 +94,8 @@ const HomeScreen = ({onClick}: Props) => {
           <Text>ZMIANA WIDOKU na ACCOUNT</Text>
         </TouchableOpacity>
         <TouchableOpacity
-          onPress={startAnimation}
+          onPress={zmianaPrzycisku}
+          onPressIn={startAnimation}
           style={{
             width: 100,
             height: 100,
@@ -92,7 +103,7 @@ const HomeScreen = ({onClick}: Props) => {
             justifyContent: 'center',
             alignItems: 'center',
           }}>
-          <Text>START</Text>
+          <Text>{'KLIK ${przycisk}'}</Text>
         </TouchableOpacity>
         <TouchableOpacity
           onPress={stopAnimation}
