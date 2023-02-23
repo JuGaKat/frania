@@ -2,7 +2,7 @@ import React, {useEffect, useRef, useState} from 'react';
 import {Text, TouchableOpacity, View} from 'react-native';
 import {DogIcon, FishIcon, RabbitIcon, CatIcon} from '../assets/icons';
 import Lottie from 'lottie-react-native';
-import {SwimmingLottie} from '../assets/lottie';
+import {SwimmingLottie, RunningLottie} from '../assets/lottie';
 
 type Props = {
   onClick: (numerWidoku: number) => void;
@@ -26,6 +26,13 @@ const HomeScreen = ({onClick}: Props) => {
 
   const stopAnimation = () => {
     animationRef.current?.pause();
+  };
+  const pro = () => {
+    if (przycisk === 'START') {
+      startAnimation();
+    } else {
+      stopAnimation();
+    }
   };
   const handleButton = () => {
     if (title === '') {
@@ -78,7 +85,13 @@ const HomeScreen = ({onClick}: Props) => {
         <FishIcon height={'25%'} width={'25%'} />
         <RabbitIcon height={'25%'} width={'25%'} />
       </View>
-      <View style={{height: '40%', width: '50%'}}>
+      <View
+        style={{
+          height: '30%',
+          width: '100%',
+          backgroundColor: 'grey',
+          flexDirection: 'column',
+        }}>
         <Lottie ref={animationRef} source={SwimmingLottie} loop autoPlay />
       </View>
       <View style={{flexDirection: 'row'}}>
@@ -95,7 +108,7 @@ const HomeScreen = ({onClick}: Props) => {
         </TouchableOpacity>
         <TouchableOpacity
           onPress={zmianaPrzycisku}
-          onPressIn={startAnimation}
+          onPressIn={pro}
           style={{
             width: 100,
             height: 100,
@@ -103,10 +116,10 @@ const HomeScreen = ({onClick}: Props) => {
             justifyContent: 'center',
             alignItems: 'center',
           }}>
-          <Text>{'KLIK ${przycisk}'}</Text>
+          <Text>{przycisk}</Text>
         </TouchableOpacity>
         <TouchableOpacity
-          onPress={stopAnimation}
+          onPress={zmianaPrzycisku}
           style={{
             width: 100,
             height: 100,
@@ -114,7 +127,7 @@ const HomeScreen = ({onClick}: Props) => {
             justifyContent: 'center',
             alignItems: 'center',
           }}>
-          <Text>STOP</Text>
+          <Text>{przycisk}</Text>
         </TouchableOpacity>
       </View>
     </View>

@@ -39,6 +39,7 @@ const MojScreen = ({onClick}: Props) => {
     console.log('TEXT', text, 'TABLICA', tablica);
   }, [text, tablica]);
 
+
   return (
     <View
       style={{

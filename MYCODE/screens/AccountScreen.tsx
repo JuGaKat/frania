@@ -22,6 +22,7 @@ type PrzepisDrugiType = {
   id: number;
   tytul: string;
   cena: number;
+  lp?: number;
 };
 const tablicaPrzepisow: Array<PrzepisType> = [
   {
@@ -76,7 +77,7 @@ const renderujDrugiPrzepis = ({item}: {item: PrzepisDrugiType}) => {
   return (
     <TouchableOpacity>
       <Text style={naszeStyle.itemText}>
-        {item.tytul}
+        {item.lp}.{item.tytul}
         {item.cena}PLN
       </Text>
     </TouchableOpacity>
@@ -140,6 +141,9 @@ const AccountScreen = ({onClick}: Props) => {
           <Text>{`KLIK ${zmienna}`}</Text>
         </TouchableOpacity>
       </View>
+      <View>
+        <Text style={{fontSize:60}}>AccountScreen</Text>
+      </View>
       <View style={naszeStyle.view2}>
         <FlatList
           showsVerticalScrollIndicator={false}
@@ -159,7 +163,7 @@ const AccountScreen = ({onClick}: Props) => {
       <View style={{flex: 0.33, backgroundColor: 'blue'}}>
         <FlatList
           showsVerticalScrollIndicator={false}
-          data={drugaTablicaPrzepisow}
+          data={ulepszonaTablicaPrzepisow}
           renderItem={renderujDrugiPrzepis}
           keyExtractor={(item, index) => index.toString()}
         />

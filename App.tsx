@@ -6,6 +6,7 @@ import HomeScreen from './MYCODE/screens/HomeScreen';
 import NewScreen from './MYCODE/screens/newScreen/NewScreen';
 import MojScreen from './MYCODE/screens/MojScreen';
 import APIScreen from './MYCODE/screens/APIScreen';
+import PrzyciskScreen from './MYCODE/screens/PrzyciskScreen/PrzyciskScreen';
 
 const App = () => {
   const [screenNumber, setScreenNumber] = useState<number>(5);
@@ -26,6 +27,8 @@ const App = () => {
         return <MojScreen onClick={handleButton} />;
       case 5:
         return <APIScreen onClick={handleButton} />;
+      case 6:
+        return <PrzyciskScreen onClick={handleButton} />;
       default:
         return <HomeScreen onClick={handleButton} />;
     }
