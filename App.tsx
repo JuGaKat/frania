@@ -4,7 +4,7 @@ import {SafeAreaView} from 'react-native';
 import AccountScreen from './MYCODE/screens/AccountScreen';
 import HomeScreen from './MYCODE/screens/HomeScreen';
 import NewScreen from './MYCODE/screens/newScreen/NewScreen';
-import MojScreen from './MYCODE/screens/MojScreen';
+import MojScreen from './MYCODE/screens/MojScreen/MojScreen';
 import APIScreen from './MYCODE/screens/APIScreen';
 import PrzyciskScreen from './MYCODE/screens/PrzyciskScreen/PrzyciskScreen';
 

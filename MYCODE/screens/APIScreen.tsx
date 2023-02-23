@@ -59,7 +59,7 @@ const APIScreen = ({onClick}: Props) => {
       <Text style={{fontSize: 26, fontWeight: 'bold'}}>API SCREEN</Text>
       <View style={{flexDirection: 'row'}}>
         <TouchableOpacity
-          onPress={() => onClick(1)}
+          onPress={() => onClick(6)}
           style={{
             width: 100,
             height: 100,
