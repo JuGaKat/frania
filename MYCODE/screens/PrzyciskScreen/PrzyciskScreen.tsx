@@ -1,12 +1,11 @@
 import React from 'react';
 import {TouchableOpacity, Text, SafeAreaView} from 'react-native';
-import Button from '../PrzyciskScreen/components/Button';
+import {useState} from 'react';
+
 type Props = {
   onClick: (numerWidoku: number) => void;
 };
-const Log = () => {
-  console.log('Loguj sie');
-};
+
 const PrzyciskScreen = ({onClick}: Props) => {
   return (
     <SafeAreaView>
@@ -21,7 +20,6 @@ const PrzyciskScreen = ({onClick}: Props) => {
         }}>
         <Text>PrzyciskScreen</Text>
       </TouchableOpacity>
-      <Button />
     </SafeAreaView>
   );
 };

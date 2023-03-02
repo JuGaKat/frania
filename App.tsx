@@ -7,9 +7,10 @@ import NewScreen from './MYCODE/screens/newScreen/NewScreen';
 import MojScreen from './MYCODE/screens/MojScreen/MojScreen';
 import APIScreen from './MYCODE/screens/APIScreen';
 import PrzyciskScreen from './MYCODE/screens/PrzyciskScreen/PrzyciskScreen';
+import LicznikScreen from './MYCODE/screens/LicznikScreen';
 
 const App = () => {
-  const [screenNumber, setScreenNumber] = useState<number>(1);
+  const [screenNumber, setScreenNumber] = useState<number>(7);
 
   const handleButton = (numerWidoku: number) => {
     setScreenNumber(numerWidoku);
@@ -29,6 +30,8 @@ const App = () => {
         return <APIScreen onClick={handleButton} />;
       case 6:
         return <PrzyciskScreen onClick={handleButton} />;
+      case 7:
+        return <LicznikScreen />;
       default:
         return <HomeScreen onClick={handleButton} />;
     }
