@@ -10,16 +10,12 @@ import {
   Image,
 } from 'react-native';
 
-type Props = {
-  onClick: any;
-};
-
 const API_KEY =
   'live_lWEJjGpYFoVQeZTxO3mGsWnTATrrpjwwTu0OSv0iSNkhaq3pynTAqEzFRLQ315b7';
 
 const LINK = 'https://api.thecatapi.com/v1/images/search';
 
-const APIScreen = ({onClick}: Props) => {
+const APIScreen = () => {
   const [tablica, setTablica] = useState<Array<string>>([]);
 
   const [loading, setLoading] = useState<boolean>(false);
@@ -59,7 +55,7 @@ const APIScreen = ({onClick}: Props) => {
       <Text style={{fontSize: 26, fontWeight: 'bold'}}>API SCREEN</Text>
       <View style={{flexDirection: 'row'}}>
         <TouchableOpacity
-          onPress={() => onClick(6)}
+          // onPress={() => onClick(6)}
           style={{
             width: 100,
             height: 100,

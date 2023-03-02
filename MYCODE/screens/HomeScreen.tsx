@@ -1,14 +1,29 @@
 import React, {useEffect, useRef, useState} from 'react';
-import {Text, TouchableOpacity, View} from 'react-native';
+import {
+  Text,
+  TouchableOpacity,
+  View,
+  Modal,
+  Pressable,
+  StyleSheet,
+} from 'react-native';
 import {DogIcon, FishIcon, RabbitIcon, CatIcon} from '../assets/icons';
 import Lottie from 'lottie-react-native';
-import {SwimmingLottie, RunningLottie} from '../assets/lottie';
+import {SwimmingLottie} from '../assets/lottie';
+import {useNavigation} from '@react-navigation/native';
 
-type Props = {
-  onClick: (numerWidoku: number) => void;
-};
-const HomeScreen = ({onClick}: Props) => {
+const HomeScreen = () => {
   const [title, setTitle] = useState('');
+  const [visibleModal, setVisibleModal] = useState<boolean>(false);
+  const navigation = useNavigation();
+
+  const toggleModal = () => {
+    setVisibleModal(prevState => !prevState);
+  };
+
+  const przejscieNaWidokLicznik = () => {
+    navigation.navigate('Licznik');
+  };
 
   const [przycisk, setPrzycisk] = useState('START');
   const zmianaPrzycisku = () => {
@@ -96,7 +111,7 @@ const HomeScreen = ({onClick}: Props) => {
       </View>
       <View style={{flexDirection: 'row'}}>
         <TouchableOpacity
-          onPress={() => onClick(2)}
+          onPress={przejscieNaWidokLicznik}
           style={{
             width: 100,
             height: 100,
@@ -104,7 +119,7 @@ const HomeScreen = ({onClick}: Props) => {
             justifyContent: 'center',
             alignItems: 'center',
           }}>
-          <Text>ZMIANA WIDOKU na ACCOUNT</Text>
+          <Text>ZMIANA WIDOKU na LICZNIK</Text>
         </TouchableOpacity>
         <TouchableOpacity
           onPress={zmianaPrzycisku}
@@ -129,9 +144,83 @@ const HomeScreen = ({onClick}: Props) => {
           }}>
           <Text>{przycisk}</Text>
         </TouchableOpacity>
+        <TouchableOpacity
+          onPress={toggleModal}
+          style={{
+            width: 100,
+            height: 100,
+            backgroundColor: 'yellow',
+            justifyContent: 'center',
+            alignItems: 'center',
+          }}>
+          <Text>{przycisk}</Text>
+        </TouchableOpacity>
       </View>
+
+      <Modal
+        animationType="fade"
+        transparent={true}
+        visible={visibleModal}
+        onRequestClose={() => {
+          toggleModal();
+        }}>
+        <View style={styles.centeredView}>
+          <View style={styles.modalView}>
+            <Text style={styles.modalText}>Hello World!</Text>
+            <Pressable
+              style={[styles.button, styles.buttonClose]}
+              onPress={toggleModal}>
+              <Text style={styles.textStyle}>Hide Modal</Text>
+            </Pressable>
+          </View>
+        </View>
+      </Modal>
     </View>
   );
 };
+
+const styles = StyleSheet.create({
+  centeredView: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    marginTop: 22,
+  },
+  modalView: {
+    margin: 20,
+    backgroundColor: 'white',
+    borderRadius: 20,
+    padding: 35,
+    alignItems: 'center',
+    shadowColor: '#000',
+    shadowOffset: {
+      width: 0,
+      height: 2,
+    },
+    shadowOpacity: 0.25,
+    shadowRadius: 4,
+    elevation: 5,
+  },
+  button: {
+    borderRadius: 20,
+    padding: 10,
+    elevation: 2,
+  },
+  buttonOpen: {
+    backgroundColor: '#F194FF',
+  },
+  buttonClose: {
+    backgroundColor: '#2196F3',
+  },
+  textStyle: {
+    color: 'white',
+    fontWeight: 'bold',
+    textAlign: 'center',
+  },
+  modalText: {
+    marginBottom: 15,
+    textAlign: 'center',
+  },
+});
 
 export default HomeScreen;

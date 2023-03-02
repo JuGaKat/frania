@@ -1,43 +1,14 @@
-import React, {useState} from 'react';
-import {SafeAreaView} from 'react-native';
+import React from 'react';
 
-import AccountScreen from './MYCODE/screens/AccountScreen';
-import HomeScreen from './MYCODE/screens/HomeScreen';
-import NewScreen from './MYCODE/screens/newScreen/NewScreen';
-import MojScreen from './MYCODE/screens/MojScreen/MojScreen';
-import APIScreen from './MYCODE/screens/APIScreen';
-import PrzyciskScreen from './MYCODE/screens/PrzyciskScreen/PrzyciskScreen';
-import LicznikScreen from './MYCODE/screens/LicznikScreen';
+import {NavigationContainer} from '@react-navigation/native';
+import Navigation from './MYCODE/navigation/Navigation';
 
 const App = () => {
-  const [screenNumber, setScreenNumber] = useState<number>(7);
-
-  const handleButton = (numerWidoku: number) => {
-    setScreenNumber(numerWidoku);
-  };
-
-  const podmianaWidokow = () => {
-    switch (screenNumber) {
-      case 1:
-        return <HomeScreen onClick={handleButton} />;
-      case 2:
-        return <AccountScreen onClick={handleButton} />;
-      case 3:
-        return <NewScreen onClick={handleButton} />;
-      case 4:
-        return <MojScreen onClick={handleButton} />;
-      case 5:
-        return <APIScreen onClick={handleButton} />;
-      case 6:
-        return <PrzyciskScreen onClick={handleButton} />;
-      case 7:
-        return <LicznikScreen />;
-      default:
-        return <HomeScreen onClick={handleButton} />;
-    }
-  };
-
-  return <SafeAreaView style={{flex: 1}}>{podmianaWidokow()}</SafeAreaView>;
+  return (
+    <NavigationContainer>
+      <Navigation />
+    </NavigationContainer>
+  );
 };
 
 export default App;

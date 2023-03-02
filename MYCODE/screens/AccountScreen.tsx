@@ -142,7 +142,7 @@ const AccountScreen = ({onClick}: Props) => {
         </TouchableOpacity>
       </View>
       <View>
-        <Text style={{fontSize:60}}>AccountScreen</Text>
+        <Text style={{fontSize: 60}}>AccountScreen</Text>
       </View>
       <View style={naszeStyle.view2}>
         <FlatList
