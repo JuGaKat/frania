@@ -9,7 +9,7 @@ import APIScreen from './MYCODE/screens/APIScreen';
 import PrzyciskScreen from './MYCODE/screens/PrzyciskScreen/PrzyciskScreen';
 
 const App = () => {
-  const [screenNumber, setScreenNumber] = useState<number>(5);
+  const [screenNumber, setScreenNumber] = useState<number>(1);
 
   const handleButton = (numerWidoku: number) => {
     setScreenNumber(numerWidoku);
