@@ -26,14 +26,13 @@ const PrzyciskScreen = () => {
     {sname: 'julia', id: 6},
   ];
 
-  const renderujLudzi=({item}:{item:LudzieTyp})={
-    return(
-  <TouchableOpacity>
-    <Text style={styles.item}>
-      {item.sname}</Text>
-  </TouchableOpacity>
-);
-};
+  const renderujLudzi = ({item}: {item: LudzieTyp}) => {
+    return (
+      <TouchableOpacity>
+        <Text style={styles.item}>{item.sname}</Text>
+      </TouchableOpacity>
+    );
+  };
   return (
     <SafeAreaView>
       <View style={{flexDirection: 'row'}}>
@@ -61,7 +60,7 @@ const PrzyciskScreen = () => {
             keyboardType={'numeric'}
             style={styles.input}
             placeholder={'your age'}
-            onChangeText={number => setAge(number)}
+            onChangeText={number => setAge(Number(number))}
           />
           <Text>
             Name:{name}, Age:{age}
@@ -70,10 +69,10 @@ const PrzyciskScreen = () => {
       </View>
       <View style={styles.secondView}>
         <FlatList
-            showsVerticalScrollIndicator={false}
+          showsVerticalScrollIndicator={false}
           data={ludzie}
           renderItem={renderujLudzi}
-          keyExtractor={(item.index:number)=>index.toString()}
+          keyExtractor={(item, index) => index.toString()}
         />
       </View>
     </SafeAreaView>
