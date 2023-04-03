@@ -14,8 +14,8 @@ type Props = {
 };
 type PrzepisType = {
   id: number;
-  tytul: string;
-  cena: number;
+  imie: string;
+  wiek: number;
   lp?: number;
 };
 type PrzepisDrugiType = {
@@ -27,36 +27,36 @@ type PrzepisDrugiType = {
 const tablicaPrzepisow: Array<PrzepisType> = [
   {
     id: 0,
-    tytul: 'Nalesniki ',
-    cena: 10.5,
+    imie: 'Anna ',
+    wiek: 10.5,
   },
   {
     id: 1,
-    tytul: 'Jajecznica ',
-    cena: 20,
+    imie: 'Karolina ',
+    wiek: 20,
   },
   {
     id: 2,
-    tytul: 'Kanapki ',
-    cena: 5,
+    imie: 'Ola ',
+    wiek: 5,
     lp: 3,
   },
   {
     id: 3,
-    tytul: 'Nalesniki ',
-    cena: 10.5,
+    imie: 'Zuza ',
+    wiek: 10.5,
     lp: 4,
   },
   {
     id: 4,
-    tytul: 'Jajecznica',
-    cena: 20,
+    imie: 'Maria ',
+    wiek: 20,
     lp: 5,
   },
   {
     id: 5,
-    tytul: 'Kanapki',
-    cena: 5,
+    imie: 'Sandra ',
+    wiek: 5,
     lp: 6,
   },
 ];
@@ -87,8 +87,8 @@ const renderujPrzepis = ({item}: {item: PrzepisType}) => {
   return (
     <TouchableOpacity>
       <Text style={naszeStyle.itemText}>
-        {item.lp}.{item.tytul}
-        {item.cena} PLN
+        {item.lp}. {item.imie}
+        {item.wiek} PLN
       </Text>
     </TouchableOpacity>
   );
@@ -100,7 +100,11 @@ const AccountScreen = ({onClick}: Props) => {
   const ulepszonaTablicaPrzepisow = tablicaPrzepisow.map((element, index) => {
     return {...element, lp: index + 1};
   });
-
+  const ulepszonaTablicaPrzepisowd = drugaTablicaPrzepisow.map(
+    (element, index) => {
+      return {...element, lp: index + 1};
+    },
+  );
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const onClick1 = () => {
     if (zmienna === 0) {
@@ -163,7 +167,7 @@ const AccountScreen = ({onClick}: Props) => {
       <View style={{flex: 0.33, backgroundColor: 'blue'}}>
         <FlatList
           showsVerticalScrollIndicator={false}
-          data={ulepszonaTablicaPrzepisow}
+          data={ulepszonaTablicaPrzepisowd}
           renderItem={renderujDrugiPrzepis}
           keyExtractor={(item, index) => index.toString()}
         />

@@ -6,6 +6,8 @@ import {
   TextInput,
   StyleSheet,
   FlatList,
+  ActivityIndicator,
+  SafeAreaView,
 } from 'react-native';
 
 type Props = {
@@ -39,7 +41,6 @@ const MojScreen = ({onClick}: Props) => {
     console.log('TEXT', text, 'TABLICA', tablica);
   }, [text, tablica]);
 
-
   return (
     <View
       style={{
@@ -49,7 +50,7 @@ const MojScreen = ({onClick}: Props) => {
       <Text style={{fontSize: 26, fontWeight: 'bold'}}>MOJ SCREEN</Text>
       <View style={{flexDirection: 'row'}}>
         <TouchableOpacity
-          onPress={() => onClick(5)}
+          onPress={() => onClick(2)}
           style={{
             width: 100,
             height: 100,

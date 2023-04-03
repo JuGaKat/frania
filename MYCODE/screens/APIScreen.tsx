@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import r, {useState} from 'react';
 import {
   View,
   Text,

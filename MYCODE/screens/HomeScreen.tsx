@@ -22,7 +22,7 @@ const HomeScreen = () => {
   };
 
   const przejscieNaWidokLicznik = () => {
-    navigation.navigate('Licznik');
+    navigation.navigate();
   };
 
   const [przycisk, setPrzycisk] = useState('START');
@@ -184,18 +184,18 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    marginTop: 22,
+    marginTop: 20,
   },
   modalView: {
     margin: 20,
     backgroundColor: 'white',
     borderRadius: 20,
-    padding: 35,
+    padding: 40,
     alignItems: 'center',
     shadowColor: '#000',
     shadowOffset: {
       width: 0,
-      height: 2,
+      height: 5,
     },
     shadowOpacity: 0.25,
     shadowRadius: 4,

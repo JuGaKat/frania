@@ -6,6 +6,8 @@ import LicznikScreen from '../screens/LicznikScreen';
 import APIScreen from '../screens/APIScreen';
 import PrzyciskScreen from '../screens/PrzyciskScreen/PrzyciskScreen';
 import Header from './Header';
+import MojScreen from '../screens/MojScreen/MojScreen';
+import AccountScreen from '../screens/AccountScreen';
 
 const Navigation = () => {
   const Stack = createNativeStackNavigator();
@@ -31,6 +33,16 @@ const Navigation = () => {
         <Stack.Screen
           name="Przycisk"
           component={PrzyciskScreen}
+          options={{headerTitle: props => <Header {...props} />}}
+        />
+        <Stack.Screen
+          name="MojScreen"
+          component={MojScreen}
+          options={{headerTitle: props => <Header {...props} />}}
+        />
+        <Stack.Screen
+          name="AccountScreen"
+          component={AccountScreen}
           options={{headerTitle: props => <Header {...props} />}}
         />
       </Stack.Navigator>
