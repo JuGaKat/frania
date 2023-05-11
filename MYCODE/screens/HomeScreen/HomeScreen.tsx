@@ -7,11 +7,13 @@ import {
   Pressable,
   StyleSheet,
 } from 'react-native';
-import {FlowerPot, ArrowFlower, Apron, Angle} from '../assets/icons';
+import {FlowerPot, ArrowFlower, Apron, Angle} from '../../assets/icons';
 import Lottie from 'lottie-react-native';
-import {Flower} from '../assets/lottie';
+import {Flower} from '../../assets/lottie';
 import {useNavigation} from '@react-navigation/native';
-import {palette} from '../assets/colors/palette';
+import {palette} from '../../assets/colors/palette';
+import ButtonContainer from './components/ButtonContainer';
+import Filters from './components/Filters';
 
 type Props = {onClick: any};
 
@@ -20,9 +22,9 @@ const HomeScreen = (onClick: Props) => {
   const [visibleModal, setVisibleModal] = useState<boolean>(false);
   const [napis, setNapis] = useState<string>('');
   const navigation = useNavigation();
-  const [visible, setVisible] = useState(false);
-  const visibleButton = () => {
-    setVisible(prevState => !prevState);
+  const [visibleFilters, setVisibleFilters] = useState(false);
+  const toggleVisibleFilters = () => {
+    setVisibleFilters(prevState => !prevState);
   };
 
   const toggleModal = () => {
@@ -85,23 +87,8 @@ const HomeScreen = (onClick: Props) => {
           Kwiaciarnia
         </Text>
       </View>
-      <View
-        style={{
-          flex: 1,
-          flexDirection: 'row',
-          padding: 10,
-        }}>
-        <TouchableOpacity
-          style={{width: '100%', height: '100%', flexDirection: 'row'}}>
-          <Angle height={'25%'} width={'25%'} onPress={visibleButton} />
-          <FlowerPot height={'25%'} width={'25%'} />
-          <Apron height={'25%'} width={'25%'} />
-          <ArrowFlower height={'25%'} width={'25%'} />
-        </TouchableOpacity>
-      </View>
-      {visible && (
-        <View style={{width: 500, height: 100, backgroundColor: 'red'}} />
-      )}
+      <ButtonContainer onPress={toggleVisibleFilters} />
+      <Filters visible={visibleFilters} toggleVisible={toggleVisibleFilters} />
       <View
         style={{
           flex: 2,
