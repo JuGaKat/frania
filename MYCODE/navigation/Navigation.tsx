@@ -9,12 +9,21 @@ import Header from './Header';
 import MojScreen from '../screens/MojScreen/MojScreen';
 import AccountScreen from '../screens/AccountScreen';
 
+export type RootStackParamList = {
+  Home: undefined;
+  Licznik: undefined;
+  API: undefined;
+  Przycisk: undefined;
+  MojScreen: undefined;
+  AccountScreen: undefined;
+};
+
 const Navigation = () => {
-  const Stack = createNativeStackNavigator();
+  const Stack = createNativeStackNavigator<RootStackParamList>();
 
   return (
     <SafeAreaView style={{flex: 1}}>
-      <Stack.Navigator initialRouteName={' Home'}>
+      <Stack.Navigator initialRouteName={'Home'}>
         <Stack.Screen
           name="Home"
           component={HomeScreen}

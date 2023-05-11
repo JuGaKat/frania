@@ -10,18 +10,24 @@ import {
 import {FlowerPot, ArrowFlower, Apron, Angle} from '../../assets/icons';
 import Lottie from 'lottie-react-native';
 import {Flower} from '../../assets/lottie';
-import {useNavigation} from '@react-navigation/native';
+import {CompositeNavigationProp, useNavigation} from '@react-navigation/native';
 import {palette} from '../../assets/colors/palette';
 import ButtonContainer from './components/ButtonContainer';
 import Filters from './components/Filters';
+import {RootStackParamList} from '../../navigation/Navigation';
+import {StackNavigationProp} from '@react-navigation/stack';
+import {BottomTabNavigationProp} from '@react-navigation/bottom-tabs';
 
-type Props = {onClick: any};
+type ProfileScreenNavigationProp = CompositeNavigationProp<
+  BottomTabNavigationProp<RootStackParamList, 'Home'>,
+  StackNavigationProp<RootStackParamList>
+>;
 
-const HomeScreen = (onClick: Props) => {
+const HomeScreen = () => {
   const [title, setTitle] = useState('');
   const [visibleModal, setVisibleModal] = useState<boolean>(false);
   const [napis, setNapis] = useState<string>('');
-  const navigation = useNavigation();
+  const navigation = useNavigation<ProfileScreenNavigationProp>();
   const [visibleFilters, setVisibleFilters] = useState(false);
   const toggleVisibleFilters = () => {
     setVisibleFilters(prevState => !prevState);

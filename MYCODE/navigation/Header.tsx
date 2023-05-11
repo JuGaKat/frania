@@ -1,10 +1,18 @@
 import React from 'react';
 import {View, Text, TouchableOpacity} from 'react-native';
 import {GLOBAL_COLORS} from '../ui/colors';
-import {useNavigation} from '@react-navigation/native';
+import {CompositeNavigationProp, useNavigation} from '@react-navigation/native';
+import {RootStackParamList} from './Navigation';
+import type {StackNavigationProp} from '@react-navigation/stack';
+import type {BottomTabNavigationProp} from '@react-navigation/bottom-tabs';
+
+type ProfileScreenNavigationProp = CompositeNavigationProp<
+  BottomTabNavigationProp<RootStackParamList, 'Home'>,
+  StackNavigationProp<RootStackParamList>
+>;
 
 const Header = (props: any) => {
-  const navigation = useNavigation();
+  const navigation = useNavigation<ProfileScreenNavigationProp>();
 
   const navigateToApiScreen = () => {
     navigation.navigate('API');
