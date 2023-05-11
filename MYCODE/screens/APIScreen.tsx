@@ -9,20 +9,30 @@ import {
   ActivityIndicator,
   Image,
 } from 'react-native';
+import {CompositeNavigationProp, useNavigation} from '@react-navigation/native';
+import {BottomTabNavigationProp} from '@react-navigation/bottom-tabs';
+import {RootStackParamList} from '../navigation/Navigation';
+import {StackNavigationProp} from '@react-navigation/stack';
 
 const API_KEY =
   'live_lWEJjGpYFoVQeZTxO3mGsWnTATrrpjwwTu0OSv0iSNkhaq3pynTAqEzFRLQ315b7';
 
 const LINK = 'https://api.thecatapi.com/v1/images/search';
 
+type ProfileScreenNavigationProp = CompositeNavigationProp<
+  BottomTabNavigationProp<RootStackParamList, 'Home'>,
+  StackNavigationProp<RootStackParamList>
+>;
+
 const APIScreen = () => {
+  const navigation = useNavigation<ProfileScreenNavigationProp>();
   const [tablica, setTablica] = useState<Array<string>>([]);
 
   const [loading, setLoading] = useState<boolean>(false);
 
   const getData = async () => {
     setLoading(true);
-    await fetch(`${LINK}?limit=100`, {
+    await fetch(`${LINK}?limit=100&has_breeds=1`, {
       method: 'GET',
       headers: {'x-api-key': API_KEY},
     }).then(response =>
@@ -36,13 +46,19 @@ const APIScreen = () => {
   };
 
   const renderujKota = ({item, index}: {item: any; index: number}) => {
+    const przejdzDoSzczegolow = () => {
+      navigation.navigate('APIDetails', {id: item.id});
+    };
+
     return (
-      <Image
-        source={{
-          uri: item.url,
-        }}
-        style={{height: 200, width: 395}}
-      />
+      <TouchableOpacity onPress={przejdzDoSzczegolow}>
+        <Image
+          source={{
+            uri: item.url,
+          }}
+          style={{height: 200, width: 395}}
+        />
+      </TouchableOpacity>
     );
   };
 

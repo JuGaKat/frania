@@ -8,11 +8,13 @@ import PrzyciskScreen from '../screens/PrzyciskScreen/PrzyciskScreen';
 import Header from './Header';
 import MojScreen from '../screens/MojScreen/MojScreen';
 import AccountScreen from '../screens/AccountScreen';
+import APIDetailsScreen from '../screens/APIDetailsScreen';
 
 export type RootStackParamList = {
   Home: undefined;
   Licznik: undefined;
   API: undefined;
+  APIDetails: {id: number};
   Przycisk: undefined;
   MojScreen: undefined;
   AccountScreen: undefined;
@@ -37,6 +39,11 @@ const Navigation = () => {
         <Stack.Screen
           name="API"
           component={APIScreen}
+          options={{headerTitle: props => <Header {...props} />}}
+        />
+        <Stack.Screen
+          name="APIDetails"
+          component={APIDetailsScreen}
           options={{headerTitle: props => <Header {...props} />}}
         />
         <Stack.Screen
