@@ -8,30 +8,51 @@ import {
   TextInput,
   FlatList,
 } from 'react-native';
+
 import {useState} from 'react';
 
 const PrzyciskScreen = () => {
-  const [name, setName] = useState<string>('shon');
-  const [age, setAge] = useState<number>(30);
+  const [error, setError] = useState<boolean>(false);
+  const [name, setName] = useState<string>('');
+  const [age, setAge] = useState<number>();
   type LudzieTyp = {
-    sname: string;
+    name: string;
     id: number;
+    index?: number;
   };
-  const ludzie: Array<LudzieTyp> = [
-    {sname: 'shon', id: 1},
-    {sname: 'karol', id: 2},
-    {sname: 'john', id: 3},
-    {sname: 'lajla', id: 4},
-    {sname: 'klara', id: 5},
-    {sname: 'julia', id: 6},
-  ];
+  const [ludzie, setLudzie] = useState<Array<LudzieTyp>>([
+    {name: 'shon', id: 1, index: 0},
+    {name: 'karol', id: 2},
+    {name: 'john', id: 3},
+    {name: 'lajla', id: 4},
+    {name: 'klara', id: 5},
+    {name: 'julia', id: 6},
+  ]);
+  const pressHandler = (item: LudzieTyp) => {
+    console.log(item);
+    handleDeleteItem(item.id);
+  };
+  const handleChangeAge = (text: string) => {
+    // sprawdza czy tekst to numer
+    // @ts-ignore
+    if (!isNaN(text)) {
+      setAge(Number(text)); //wykonuje sie gdy tekst jest numerem
+      setError(false);
+    } else {
+      setError(true);
+    }
+  };
 
   const renderujLudzi = ({item}: {item: LudzieTyp}) => {
     return (
-      <TouchableOpacity>
-        <Text style={styles.item}>{item.sname}</Text>
+      <TouchableOpacity onPress={() => pressHandler(item)}>
+        <Text style={styles.item}>{item.name}</Text>
       </TouchableOpacity>
     );
+  };
+  const handleDeleteItem = (id: number) => {
+    const newArray = ludzie.filter(item => item.id !== id);
+    setLudzie(newArray);
   };
   return (
     <SafeAreaView>
@@ -60,11 +81,12 @@ const PrzyciskScreen = () => {
             keyboardType={'numeric'}
             style={styles.input}
             placeholder={'your age'}
-            onChangeText={number => setAge(Number(number))}
+            onChangeText={text => handleChangeAge(text)}
           />
           <Text>
-            Name:{name}, Age:{age}
+            Name:{name}, Age:{error ? 'błąd' : age}
           </Text>
+          {error && <Text style={{color: 'red'}}>Uwaga błąd!</Text>}
         </View>
       </View>
       <View style={styles.secondView}>
@@ -87,7 +109,7 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     borderColor: '#777',
     padding: 8,
-    margin: 8,
+    margin: 10,
     width: 200,
   },
   secondView: {

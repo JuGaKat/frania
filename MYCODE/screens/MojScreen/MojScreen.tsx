@@ -10,10 +10,7 @@ import {
   SafeAreaView,
 } from 'react-native';
 
-type Props = {
-  onClick: any;
-};
-const MojScreen = ({onClick}: Props) => {
+const MojScreen = () => {
   const [tablica, setTablica] = useState<Array<string>>([]);
   const [text, setText] = useState('');
 
@@ -48,17 +45,6 @@ const MojScreen = ({onClick}: Props) => {
         flex: 1,
       }}>
       <Text style={{fontSize: 26, fontWeight: 'bold'}}>MOJ SCREEN</Text>
-      <View style={{flexDirection: 'row'}}>
-        <TouchableOpacity
-          onPress={() => onClick(2)}
-          style={{
-            width: 100,
-            height: 100,
-            backgroundColor: 'black',
-          }}>
-          <Text style={{color: 'white'}}>ZMIANA WIDOKU na API</Text>
-        </TouchableOpacity>
-      </View>
 
       <View style={styles.containerStyle}>
         <TextInput
@@ -85,7 +71,7 @@ const MojScreen = ({onClick}: Props) => {
 const styles = StyleSheet.create({
   containerStyle: {width: '100%', flexDirection: 'row'},
   inputStyle: {
-    flex: 2,
+    flex: 3,
     backgroundColor: 'white',
   },
   buttonStyle: {

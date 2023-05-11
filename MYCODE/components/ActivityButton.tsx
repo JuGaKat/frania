@@ -22,7 +22,7 @@ const styles = StyleSheet.create({
   buttonContainer: {
     alignItems: 'center',
     alignSelf: 'center',
-    height: 50,
+    height: 70,
     justifyContent: 'center',
     margin: 30,
     width: 260,

@@ -93,7 +93,7 @@ const renderujPrzepis = ({item}: {item: PrzepisType}) => {
     </TouchableOpacity>
   );
 };
-const AccountScreen = ({onClick}: Props) => {
+const AccountScreen = () => {
   const [zmienna, setZmienna] = useState<number>(0);
 
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
@@ -122,18 +122,6 @@ const AccountScreen = ({onClick}: Props) => {
         flexDirection: 'column',
       }}>
       <View style={naszeStyle.view1}>
-        <TouchableOpacity
-          onPress={() => onClick(3)}
-          style={{
-            width: 100,
-            height: 100,
-            backgroundColor: 'green',
-            justifyContent: 'center',
-            alignItems: 'center',
-            flexDirection: 'row',
-          }}>
-          <Text>Zmiana widoku</Text>
-        </TouchableOpacity>
         <TouchableOpacity
           onPress={onClick1}
           style={{
